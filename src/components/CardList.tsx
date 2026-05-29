@@ -6,11 +6,11 @@ const ITEMS_PER_PAGE = 3;
 
 const CardList = ({ policies }: { policies: IPolicy[] }) => {
     const [currentPage, setCurrentPage] = useState(1);
-
     const totalPages = Math.ceil(policies.length / ITEMS_PER_PAGE);
     const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
     const currentPolicies = policies.slice(startIndex, startIndex + ITEMS_PER_PAGE);
 
+    {/* Handler for pagination buttons */}
     const goToPage = (page: number) => {
         if (page >= 1 && page <= totalPages) {
             setCurrentPage(page);
@@ -19,12 +19,14 @@ const CardList = ({ policies }: { policies: IPolicy[] }) => {
 
     return (
         <div>
+            {/* Policy cards */}
             <div className="flex flex-col gap-4">
                 {currentPolicies.map((policy) => (
                     <PolicyCard key={policy.policyNumber} policy={policy} />
                 ))}
             </div>
 
+            {/* Pagination */}
             {totalPages > 1 && (
                 <div className="flex items-center justify-center gap-2 mt-8">
                     <button

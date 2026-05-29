@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import CardList from "./components/CardList"
+import CardList from "./components/CardList";
 import type { IPolicy } from "./types/Policy";
 import { policies as mockPolicies } from "./data/policies";
 
@@ -9,7 +9,8 @@ function App() {
 
   useEffect(() => {
     setLoading(true);
-
+    
+    {/* API call with timeout */}
     setTimeout(() => {
       const filtered = mockPolicies
         .filter((p) => p.status === "Active")
@@ -18,13 +19,14 @@ function App() {
       setLoading(false);
     }, 500);
   }, []);
+
   return (
     <main className="min-h-screen bg-gray-100 py-12 px-6">
         <div className="w-full max-w-4xl mx-auto">
             {loading ? (
               <p>Loading policies...</p>
             ) : (
-            <CardList policies={policies} />
+              <CardList policies={policies} />
             )}
         </div>
     </main>

@@ -1,3 +1,4 @@
+// Utility function to format date strings to "DD MMM YYYY"
 const formatDate = (dateStr: string): string => {
     const [year, month, day] = dateStr.split("-");
     const date = new Date(Number(year), Number(month) - 1, Number(day));
